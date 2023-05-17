@@ -2,36 +2,59 @@
 <head>
   <title>Basic Doodle Jump HTML Game</title>
   <meta charset="UTF-8">
-  <style>
-      html, body {
-        height: 100%;  
-        margin: 0;
-      }  
-      body {
-        text-align: center;
-        align-items: center; 
-      }
-      canvas {
-        border: 2px solid #FF0000;
-        background-color: #E6E6E6;
-        border-radius: 10px;
-        box-shadow: 0px 0px 10px #FF0000;
-        display: block;
-        margin: 0;
-        height: 100%;
-      }
-      #score {
-        font-size: 2em;
-        font-weight: bold;
-        position: absolute;
-        top: 1;
-        left: 52%;
-        transform: translateX(-50%);
-      }
+    <style>
+    html, body {
+      height: 100%;  
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+    }  
+    body {
+      text-align: center;
+      align-items: center; 
+    }
+    canvas {
+      border: 2px solid #FF0000;
+      background-color: #E6E6E6;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px #FF0000;
+      display: block;
+      margin: 0;
+      height: 100%;
+    }
+    #score {
+      font-size: 2em;
+      font-weight: bold;
+      position: absolute;
+      top: 1;
+      left: 52%;
+      transform: translateX(-50%);
+    }
+    #table-container {
+      margin-left: 20px;
+      flex-direction: row;
+    }
+     #content-container {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+    }
   </style>
 </head>
 <body>
+
+  <div id="table-container">
+    <table id="demo">
+      <tr>
+        <th>Player</th>
+        <th>Score</th>
+      </tr>
+    </table>
+  </div>
   <div id="score">1</div>
+  
 <canvas width="375" height="667" id="game"></canvas>
 <script>
 class DoodleJumper {
@@ -175,64 +198,29 @@ class DoodleJumper {
       }
     }
 </script>
-</body>
-
-
-<body>
-<table id="demo">
-  <tr>
-    <th>Player</th>
-    <th>Score</th>
-  </tr>
-</table>
-
-<p>Hashmap array</p>
-
-<p id="demo"></p>
-<p id="knish"></p>
 
 <script>
-// Create a Map
-const scores = new Map([
-  ["jim", 500],
-  ["knish", 300],
-  ["monkey", 200]
-]);
+    // Create a Map
+    const scores = new Map([
+      ["jim", 500],
+      ["knish", 300],
+      ["monkey", 200]
+    ]);
 
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+    // Generate the table rows dynamically
+    const table = document.getElementById("demo");
 
-// // Replace the value of "knish" with a random value
-// const randomValue = getRandomInt(100, 1000);
-// scores.set("knish", randomValue);
+    scores.forEach((value, key) => {
+      const row = table.insertRow();
+      const playerCell = row.insertCell(0);
+      const scoreCell = row.insertCell(1);
 
-// document.getElementById("knish").innerHTML = scores.get("knish");
-
-// const newKey = "newPlayer";
-// const newValue = getRandomInt(100, 1000);
-// scores.set(newKey, newValue);
-
-// document.getElementById("demo").innerHTML = scores.get(newKey);
-
-
-// // Add a new key-value pair to the map
-// const newKey = "newPlayer";
-// const newValue = getRandomInt(100, 1000);
-// scores.set(newKey, newValue);
-
-// Generate the table rows dynamically
-const table = document.getElementById("demo");
-
-scores.forEach((value, key) => {
-  const row = table.insertRow();
-  const playerCell = row.insertCell(0);
-  const scoreCell = row.insertCell(1);
-
-  playerCell.innerHTML = key;
-  scoreCell.innerHTML = value;
-});
-</script>
-
+      playerCell.innerHTML = key;
+      scoreCell.innerHTML = value;
+    });
+  </script>
 </body>
+
+
+
 </html>
