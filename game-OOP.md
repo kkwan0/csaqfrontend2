@@ -179,9 +179,17 @@ class DoodleJumper {
 
 
 <body>
+<table id="demo">
+  <tr>
+    <th>Player</th>
+    <th>Score</th>
+  </tr>
+</table>
+
 <p>Hashmap array</p>
 
 <p id="demo"></p>
+<p id="knish"></p>
 
 <script>
 // Create a Map
@@ -191,7 +199,39 @@ const scores = new Map([
   ["monkey", 200]
 ]);
 
-document.getElementById("demo").innerHTML = scores.get("knish");
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// // Replace the value of "knish" with a random value
+// const randomValue = getRandomInt(100, 1000);
+// scores.set("knish", randomValue);
+
+// document.getElementById("knish").innerHTML = scores.get("knish");
+
+// const newKey = "newPlayer";
+// const newValue = getRandomInt(100, 1000);
+// scores.set(newKey, newValue);
+
+// document.getElementById("demo").innerHTML = scores.get(newKey);
+
+
+// // Add a new key-value pair to the map
+// const newKey = "newPlayer";
+// const newValue = getRandomInt(100, 1000);
+// scores.set(newKey, newValue);
+
+// Generate the table rows dynamically
+const table = document.getElementById("demo");
+
+scores.forEach((value, key) => {
+  const row = table.insertRow();
+  const playerCell = row.insertCell(0);
+  const scoreCell = row.insertCell(1);
+
+  playerCell.innerHTML = key;
+  scoreCell.innerHTML = value;
+});
 </script>
 
 </body>
