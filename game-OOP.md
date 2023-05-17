@@ -207,6 +207,15 @@ class DoodleJumper {
       ["monkey", 200]
     ]);
 
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// Add a new key-value pair to the map
+const newKey = "newPlayer";
+const newValue = getRandomInt(100, 1000);
+scores.set(newKey, newValue);
+
     // Generate the table rows dynamically
     const table = document.getElementById("demo");
 
