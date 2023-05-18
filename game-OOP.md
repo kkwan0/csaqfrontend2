@@ -54,7 +54,7 @@
     </table>
   </div>
   <div id="score">1</div>
-  
+        <button id="add-score-btn">Add Score</button>
 <canvas width="375" height="667" id="game"></canvas>
 <script>
 class DoodleJumper {
@@ -200,26 +200,35 @@ class DoodleJumper {
 </script>
 
 <script>
-    // Create a Map
     const scores = new Map([
       ["jim", 500],
       ["knish", 300],
       ["monkey", 200]
     ]);
 
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
 
-// Add a new key-value pair to the map
-const newKey = "newPlayer";
-const newValue = getRandomInt(100, 1000);
-scores.set(newKey, newValue);
+    function addRandomScore() {
+      const newKey = "newPlayer";
+      const newValue = getRandomInt(100, 1000);
+      scores.set(newKey, newValue);
 
-    // Generate the table rows dynamically
-    const table = document.getElementById("demo");
+      const table = document.getElementById("demo");
+      const row = table.insertRow();
+      const playerCell = row.insertCell(0);
+      const scoreCell = row.insertCell(1);
 
+      playerCell.innerHTML = newKey;
+      scoreCell.innerHTML = newValue;
+    }
+
+    const addButton = document.getElementById("add-score-btn");
+    addButton.addEventListener("click", addRandomScore);
+    
     scores.forEach((value, key) => {
+      const table = document.getElementById("demo");
       const row = table.insertRow();
       const playerCell = row.insertCell(0);
       const scoreCell = row.insertCell(1);
