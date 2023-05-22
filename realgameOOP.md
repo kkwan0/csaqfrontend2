@@ -76,6 +76,9 @@
   const platformWidth = 65;
   const platformHeight = 20;
   const platformStart = canvas.height - 50; //platformStart - 617
+  // minimum and maximum vertical space between each platform
+  let minPlatformSpace = 15;
+  let maxPlatformSpace = 20;
   //* starting adding platforms to the canvas 
   let y = platformStart;
   let doodlePlatforms = new Platforms()
@@ -106,7 +109,7 @@
     context.clearRect(0,0,canvas.width,canvas.height);
     context.fillStyle = 'green';
     platforms = doodlePlatforms.allPlatforms;
-    platforms.forEach(function(platform) {
+    platforms.forEach(function(Platform) {
       context.fillRect(platform.X(), platform.Y(), platformWidth, platformHeight);
     });
     /*
