@@ -40,10 +40,18 @@
             this.y = y;
         }
         get X() {
-            return this.x;
+            return this._x;
         }
         get Y() {
-            return this.y;
+            return this._y;
+        }
+        set X(x)
+        {
+          this._x=x;
+        }
+        set Y(y)
+        {
+          this._y=y;
         }
     }
 /*
@@ -88,7 +96,8 @@
   while (y > 0) {
     // the next platform can be placed above the previous one with a space
     // somewhere between the min and max space
-    y -= platformHeight + random(minPlatformSpace, maxPlatformSpace); //suppose it is y = 595 when called
+    y -= platformHeight + random(minPlatformSpace, maxPlatformSpace); 
+    //suppose it is y = 595 when called
     // a platform can be placed anywhere 25px from the left edge of the canvas
     // and 25px from the right edge of the canvas (taking into account platform
     // width).
@@ -130,10 +139,10 @@
     // instead of doodle up to make it look like doodle is going up
     if (doodle.y < canvas.height / 2 && doodle.dy < 0) {
       doodlePlatforms.forEach(function(platform) {
-        platform.Y() += -doodle.dy;
+        platform.Y += -doodle.dy;
       });
       // add more platforms to the top of the screen as doodle moves up
-      while (doodlePlatforms[doodlePlatforms.length - 1].y > 0) {
+      while (doodlePlatforms[doodlePlatforms.length - 1].getY() > 0) {
             doodlePlatforms.push(new Platform(random(25, canvas.width - 25 - platformWidth),platforms[platforms.length - 1].y - (platformHeight + random(minPlatformSpace, maxPlatformSpace)))
         );
         // add a bit to the min/max platform space as the player goes up
@@ -175,22 +184,22 @@
     // draw platforms
     context.fillStyle = 'green';
     doodlePlatforms.forEach(function(platform) {
-      context.fillRect(platform.X(), platform.Y(), platformWidth, platformHeight);
+      context.fillRect(platform.X, platform.Y, platformWidth, platformHeight);
       // make doodle jump if it collides with a platform from above
       if (
         // doodle is falling
         doodle.dy > 0 &&
         // doodle was previous above the platform
-        prevDoodleY + doodle.height <= platform.Y() &&
+        prevDoodleY + doodle.height <= platform.getY() &&
         // doodle collides with platform
         // (Axis Aligned Bounding Box [AABB] collision check)
-        doodle.x < platform.X() + platformWidth &&
-        doodle.x + doodle.width > platform.X() &&
-        doodle.y < platform.Y() + platformHeight &&
-        doodle.y + doodle.height > platform.Y()
+        doodle.x < platform.X + platformWidth &&
+        doodle.x + doodle.width > platform.X &&
+        doodle.y < platform.Y + platformHeight &&
+        doodle.y + doodle.height > platform.Y
       ) {
         // reset doodle position so it's on top of the platform
-        doodle.y = platform.Y() - doodle.height;
+        doodle.y = platform.Y - doodle.height;
         doodle.dy = bounceVelocity;
       }
     });
@@ -200,7 +209,7 @@
     prevDoodleY = doodle.y;
     // remove any platforms that have gone offscreen
     doodlePlatforms = doodlePlatforms.filter(function(platform) {
-      return platform.Y() < canvas.height;
+      return platform.Y < canvas.height;
     })
   }
   // listen to keyboard events to move doodle
