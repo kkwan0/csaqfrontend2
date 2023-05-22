@@ -34,6 +34,18 @@
   <div id="score">1</div>
 <canvas width="375" height="667" id="game"></canvas>
 <script>
+    class Platform {
+        constructor(x, y) {
+            this.x = x;
+            this.y = y;
+        }
+        get X() {
+            return this.x;
+        }
+        get Y() {
+            return this.y;
+        }
+    }
   class Platforms {
     constructor() {
       this.myPlatforms = []
@@ -87,6 +99,22 @@
     );
     doodlePlatforms.newPlatform(x, y)
   }
+  //game loop
+  function loop() {
+    //updateScore();
+    requestAnimationFrame(loop);
+    context.clearRect(0,0,canvas.width,canvas.height);
+    context.fillStyle = 'green';
+    doodlePlatforms.allPlatforms().forEach(function(platform) {
+      context.fillRect(platform.X(), platform.Y(), platformWidth, platformHeight);
+    }
+    doodlePlatforms = doodlePlatforms.allPlatforms().filter(function(platform) {
+      return platform.Y() < canvas.height;
+    })
+  }
+  // start the game
+  requestAnimationFrame(loop);
+  //updateScore();
   </script>
   </body>
   </html>
