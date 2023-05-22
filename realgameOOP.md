@@ -108,7 +108,7 @@
     doodlePlatforms.allPlatforms().forEach(function(platform) {
       context.fillRect(platform.X(), platform.Y(), platformWidth, platformHeight);
     }
-    doodlePlatforms = doodlePlatforms.allPlatforms().filter(function(platform) {
+    doodlePlatforms.allPlatforms() = doodlePlatforms.allPlatforms().filter(function(platform) {
       return platform.Y() < canvas.height;
     })
   }
