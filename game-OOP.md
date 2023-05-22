@@ -49,7 +49,7 @@
   </tbody>
 </table>
   </div>
-
+  <button onclick="createNewCookie()">Create New Cookie</button>
 <script>
 class DoodleJumper {
   constructor() {
@@ -228,4 +228,4 @@ class DoodleJumper {
 
     tableBody.appendChild(row);
   }
-</script>
+</script> 
