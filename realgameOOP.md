@@ -146,8 +146,8 @@
         platform.Y += -doodle.dy;
       });
       // add more platforms to the top of the screen as doodle moves up
-      while (doodlePlatforms[doodlePlatforms.length - 1].getY() > 0) {
-            doodlePlatforms.push(new Platform(random(25, canvas.width - 25 - platformWidth),platforms[platforms.length - 1].y - (platformHeight + random(minPlatformSpace, maxPlatformSpace)))
+      while (doodlePlatforms[doodlePlatforms.length - 1].Y > 0) {
+            doodlePlatforms.push(new Platform(random(25, canvas.width - 25 - platformWidth),doodlePlatforms[doodlePlatforms.length - 1].Y - (platformHeight + random(minPlatformSpace, maxPlatformSpace)))
         );
         // add a bit to the min/max platform space as the player goes up
         minPlatformSpace += 0.5;
@@ -194,7 +194,7 @@
         // doodle is falling
         doodle.dy > 0 &&
         // doodle was previous above the platform
-        prevDoodleY + doodle.height <= platform.getY() &&
+        prevDoodleY + doodle.height <= platform.Y &&
         // doodle collides with platform
         // (Axis Aligned Bounding Box [AABB] collision check)
         doodle.x < platform.X + platformWidth &&
