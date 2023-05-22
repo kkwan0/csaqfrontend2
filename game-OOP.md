@@ -31,8 +31,25 @@
   </style>
 </head>
 <body>
-  <div id="score">1</div>
-<canvas width="375" height="667" id="game"></canvas>
+<div style="display: flex;" class="canvas-container">
+  <div >
+  <canvas width="375" height="667" id="game"></canvas>
+</div>
+
+
+<div >
+<table id="cookieTable">
+  <thead>
+    <tr>
+      <th>Cookie Name</th>
+      <th>Cookie Value</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+  </div>
+
 <script>
 class DoodleJumper {
   constructor() {
@@ -175,25 +192,15 @@ class DoodleJumper {
       }
     }
 </script>
-</body>
 
 
-<body>
 
-<table id="cookieTable">
-  <thead>
-    <tr>
-      <th>Cookie Name</th>
-      <th>Cookie Value</th>
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
-</table>
+
+
 
 <script>
   
-  document.cookie = "score1=test";
+  document.cookie = "score1=test"; //inputs a cookie
 
   var cookieValue = document.cookie;
 
@@ -222,5 +229,3 @@ class DoodleJumper {
     tableBody.appendChild(row);
   }
 </script>
-</body>
-</html>
