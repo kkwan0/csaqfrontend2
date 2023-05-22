@@ -108,15 +108,12 @@
     requestAnimationFrame(loop);
     context.clearRect(0,0,canvas.width,canvas.height);
     context.fillStyle = 'green';
-    platforms = doodlePlatforms.allPlatforms;
-    platforms.forEach(function(Platform) {
+    doodlePlatforms.allPlatforms.forEach(function(platform) {
       context.fillRect(platform.X(), platform.Y(), platformWidth, platformHeight);
     });
-    /*
-    doodlePlatforms.allPlatforms() = doodlePlatforms.allPlatforms().filter(function(platform) {
+    doodlePlatforms.allPlatforms = doodlePlatforms.allPlatforms.filter(function(platform) {
       return platform.Y() < canvas.height;
     })
-    */
   }
   // start the game
   requestAnimationFrame(loop);
