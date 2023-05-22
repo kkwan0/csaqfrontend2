@@ -23,7 +23,7 @@
       #score {
         font-size: 2em;
         font-weight: bold;
-        position: fixed;
+        position: abosulute;
         color: #000000;
         top: 0;
         left: 0;
