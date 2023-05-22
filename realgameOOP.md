@@ -105,7 +105,8 @@
     requestAnimationFrame(loop);
     context.clearRect(0,0,canvas.width,canvas.height);
     context.fillStyle = 'green';
-    doodlePlatforms.allPlatforms().forEach(function(platform) {
+    platforms = doodlePlatforms.allPlatforms();
+    platforms.forEach(function(platform) {
       context.fillRect(platform.X(), platform.Y(), platformWidth, platformHeight);
     }
     /*
