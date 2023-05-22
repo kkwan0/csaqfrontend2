@@ -179,20 +179,48 @@ class DoodleJumper {
 
 
 <body>
-<p>Hashmap array</p>
 
-<p id="demo"></p>
+<table id="cookieTable">
+  <thead>
+    <tr>
+      <th>Cookie Name</th>
+      <th>Cookie Value</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
 
 <script>
-// Create a Map
-const scores = new Map([
-  ["jim", 500],
-  ["knish", 300],
-  ["monkey", 200]
-]);
+  
+  document.cookie = "score1=test";
 
-document.getElementById("demo").innerHTML = scores.get("knish");
+  var cookieValue = document.cookie;
+
+  // Split the cookie string into an array of cookies
+  var cookies = cookieValue.split(';');
+
+  // Get the table body element
+  var tableBody = document.querySelector('#cookieTable tbody');
+
+  // Generate table rows for each cookie
+  for (var i = 0; i < cookies.length; i++) {
+    var cookie = cookies[i].trim().split('=');
+    var name = cookie[0];
+    var value = cookie[1];
+
+    var row = document.createElement('tr');
+
+    var nameCell = document.createElement('td');
+    nameCell.textContent = name;
+    row.appendChild(nameCell);
+
+    var valueCell = document.createElement('td');
+    valueCell.textContent = value;
+    row.appendChild(valueCell);
+
+    tableBody.appendChild(row);
+  }
 </script>
-
 </body>
 </html>
