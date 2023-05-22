@@ -40,18 +40,18 @@
             this.y = y;
         }
         get X() {
-            return this._x;
+            return this.x;
         }
         get Y() {
-            return this._y;
+            return this.y;
         }
         set X(x)
         {
-          this._x=x;
+          this.x=x;
         }
         set Y(y)
         {
-          this._y=y;
+          this.y=y;
         }
     }
 /*
