@@ -95,8 +95,7 @@
   let maxPlatformSpace = 20;
   //* starting adding platforms to the canvas 
   let y = platformStart;
-  let doodlePlatforms = [new Platform(canvas.width / 2 - platformWidth / 2,
-    platformStart)];
+  let doodlePlatforms = [new Platform(canvas.width / 2 - platformWidth / 2, platformStart)];
   while (y > 0) {
     // the next platform can be placed above the previous one with a space
     // somewhere between the min and max space
