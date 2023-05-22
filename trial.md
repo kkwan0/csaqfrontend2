@@ -1,3 +1,20 @@
+<html>
+<head>
+  <title>Trial</title>
+  <meta charset="UTF-8">
+  <style>
+      html, body {
+        height: 100%;  
+        margin: 0;
+      }  
+      body {
+        text-align: center;
+        align-items: center; 
+      }
+  </style>
+</head>
+<body>
+
 <script>
 class Score {
   constructor() {
@@ -30,9 +47,13 @@ if (/* block touches platform */) {
   console.log("Current score: " + currentScore);
 
 } else {
-  
+
   // Reset score
   gameScore.resetScore();
   console.log("Score after reset: " + currentScore);
 }
 <script>
+
+</body>
+
+</html>
