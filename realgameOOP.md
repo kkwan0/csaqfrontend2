@@ -86,6 +86,10 @@
   const platformWidth = 65;
   const platformHeight = 20;
   const platformStart = canvas.height - 50; //platformStart - 617
+  // player physics
+  const gravity = 0.33;
+  const drag = 0.3;
+  const bounceVelocity = -12.5;
   // minimum and maximum vertical space between each platform
   let minPlatformSpace = 15;
   let maxPlatformSpace = 20;
