@@ -191,6 +191,8 @@ class DoodleJumper {
         }
       }
     }
+    }
+    }
 </script>
 
 
@@ -199,10 +201,10 @@ class DoodleJumper {
 
 
 <script>
-  
-  document.cookie = "score1=test"; //inputs a cookie
 
   var cookieValue = document.cookie;
+  const daysToExpire = new Date(2147483647 * 1000).toUTCString();
+    document.cookie = 'score1=test;' + ' expires=' + daysToExpire; //date
 
   // Split the cookie string into an array of cookies
   var cookies = cookieValue.split(';');
@@ -227,5 +229,14 @@ class DoodleJumper {
     row.appendChild(valueCell);
 
     tableBody.appendChild(row);
+  }
+  function createNewCookie() {
+    // Generate a new cookie name and value
+    var cookieName = 'user' + (document.cookie.split('user').length - 1);
+    var cookieValue = 'value' + (document.cookie.split('user').length - 1);
+
+    // Set the new cookie
+    document.cookie = cookieName + '=' + cookieValue + '; expires=' + daysToExpire;
+    
   }
 </script> 
