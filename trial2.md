@@ -1,3 +1,21 @@
+<html>
+<head>
+  <title>Trial 2</title>
+  <meta charset="UTF-8">
+  <style>
+      html, body {
+        height: 100%;  
+        margin: 0;
+      }  
+      body {
+        text-align: center;
+        align-items: center; 
+      }
+  </style>
+</head>
+<body>
+
+<script>
 public class GameTime {
     private long startTime;
 
@@ -31,3 +49,8 @@ public class GameTime {
         System.out.println("Elapsed seconds: " + elapsedSeconds);
     }
 }
+</script>
+
+</body>
+
+</html>
