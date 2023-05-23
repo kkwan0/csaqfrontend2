@@ -31,8 +31,25 @@
   </style>
 </head>
 <body>
-  <div id="score">1</div>
-<canvas width="375" height="667" id="game"></canvas>
+<div style="display: flex;" class="canvas-container">
+  <div >
+  <canvas width="375" height="667" id="game"></canvas>
+</div>
+
+
+<div >
+<table id="cookieTable">
+  <thead>
+    <tr>
+      <th>Cookie Name</th>
+      <th>Cookie Value</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+  </div>
+  <button onclick="createNewCookie()">Create New Cookie</button>
 <script>
 class DoodleJumper {
   constructor() {
@@ -174,28 +191,20 @@ class DoodleJumper {
         }
       }
     }
+    }
+    }
 </script>
-</body>
 
 
-<body>
 
-<table id="cookieTable">
-  <thead>
-    <tr>
-      <th>Cookie Name</th>
-      <th>Cookie Value</th>
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
-</table>
+
+
 
 <script>
-  
-  document.cookie = "score1=test";
 
   var cookieValue = document.cookie;
+  const daysToExpire = new Date(2147483647 * 1000).toUTCString();
+    document.cookie = 'score1=test;' + ' expires=' + daysToExpire; //date
 
   // Split the cookie string into an array of cookies
   var cookies = cookieValue.split(';');
@@ -221,6 +230,13 @@ class DoodleJumper {
 
     tableBody.appendChild(row);
   }
-</script>
-</body>
-</html>
+  function createNewCookie() {
+    // Generate a new cookie name and value
+    var cookieName = 'user' + (document.cookie.split('user').length - 1);
+    var cookieValue = 'value' + (document.cookie.split('user').length - 1);
+
+    // Set the new cookie
+    document.cookie = cookieName + '=' + cookieValue + '; expires=' + daysToExpire;
+    
+  }
+</script> 
