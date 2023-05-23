@@ -213,6 +213,7 @@ class DoodleJumper {
   var tableBody = document.querySelector('#cookieTable tbody');
 
   // Generate table rows for each cookie
+function tablegen() {
   for (var i = 0; i < cookies.length; i++) {
     var cookie = cookies[i].trim().split('=');
     var name = cookie[0];
@@ -230,6 +231,8 @@ class DoodleJumper {
 
     tableBody.appendChild(row);
   }
+}
+tablegen();
   function createNewCookie() {
     // Generate a new cookie name and value
     var cookieName = 'user' + (document.cookie.split('user').length - 1);
@@ -237,6 +240,8 @@ class DoodleJumper {
 
     // Set the new cookie
     document.cookie = cookieName + '=' + cookieValue + '; expires=' + daysToExpire;
+    var tableBody = document.querySelector('#cookieTable tbody');
+tablegen();
     
   }
 </script> 
