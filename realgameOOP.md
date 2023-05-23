@@ -23,10 +23,13 @@
       #score {
         font-size: 2em;
         font-weight: bold;
-        position: center;
-        top: 1;
-        left: 52%;
-        transform: translateX(12.5%);
+        position: abosulute;
+        color: #000000;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 300px;
+        transform: translateX(12%);
       }
   </style>
 </head>
