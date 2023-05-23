@@ -23,10 +23,22 @@
       #score {
         font-size: 2em;
         font-weight: bold;
+        font-family: Aharoni;
         position: abosulute;
-        color: #000000;
+        color: green;
         top: 0;
         left: 0;
+        right: 0;
+        width: 300px;
+        transform: translateX(12%);
+      }
+      #time {
+        font-size: 2em;
+        font-weight: bold;
+        font-family: Aharoni;
+        position: abosulute;
+        color: green;
+        top: 0;
         right: 0;
         width: 300px;
         transform: translateX(12%);
@@ -34,7 +46,8 @@
   </style>
 </head>
 <body>
-  <div id="score">1</div>
+  <div id="score">Score = 1</div>
+  <div id="time">Time Elapsed = 60</div>
 <canvas width="375" height="667" id="game"></canvas>
 <script>
     class Platform {
