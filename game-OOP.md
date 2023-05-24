@@ -241,7 +241,7 @@ tablegen();
     // Set the new cookie
     document.cookie = cookieName + '=' + cookieValue + '; expires=' + daysToExpire;
     var tableBody = document.querySelector('#cookieTable tbody');
-tablegen();
+tablegen(); //generates the table
     
   }
 </script> 
