@@ -122,6 +122,20 @@
       this.dy = dy;
     }
   }
+  class Score {
+    constructor() {
+        this.score = 0;w
+    }
+    getScore() {
+        return this.score;
+    }
+    increaseScore() {
+        this.score++;
+    }
+    resetScore() {
+        this.score = 0;
+    }
+}
 /*
   class Platforms {
     constructor() {
@@ -158,6 +172,9 @@
   const gravity = 0.33;
   const drag = 0.3;
   const bounceVelocity = -12.5;
+  // score variables
+  var score = 0;
+  var highScore = 0;  
   // minimum and maximum vertical space between each platform
   let minPlatformSpace = 15;
   let maxPlatformSpace = 20;
@@ -275,6 +292,11 @@
         // reset doodle position so it's on top of the platform
         doodle.Y = platform.Y - doodle.H;
         doodle.Dy = bounceVelocity;
+        score++;
+      }
+      if (score > highScore) {
+        highScore = score; //makes the new highest score
+        score = 0; //resets score
       }
     });
     // draw doodle
