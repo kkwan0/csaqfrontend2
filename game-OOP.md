@@ -228,8 +228,9 @@ function tablegen() {
     var valueCell = document.createElement('td');
     valueCell.textContent = value;
     row.appendChild(valueCell);
-
     tableBody.appendChild(row);
+
+    
   }
 }
 tablegen();
@@ -240,8 +241,12 @@ tablegen();
 
     // Set the new cookie
     document.cookie = cookieName + '=' + cookieValue + '; expires=' + daysToExpire;
-    var tableBody = document.querySelector('#cookieTable tbody');
-tablegen(); //generates the table
-    
+    var tableBody = document.querySelector('#cookieTable tbody'); 
+    deleteCookie()
   }
+
+  function deleteCookie() {
+      document.cookie = 'score1=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+  }
+
 </script> 
