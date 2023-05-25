@@ -11,6 +11,9 @@
         text-align: center;
         align-items: center; 
       }
+      .container {
+        display: flex;
+      }
       canvas {
         border: 2px solid #FF0000;
         background-color: #E6E6E6;
@@ -19,7 +22,14 @@
         display: block;
         margin: 0;
         height: 100%;
+        style="display: inline-block;"
       }
+      info-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        height: 100%;
+  }
       #score {
         font-size: 2em;
         font-weight: bold;
@@ -57,10 +67,19 @@
   </style>
 </head>
 <body>
+
+<div class="container">
+
+
+  <div class="canvas-container">
+<canvas width="375" height="667" id="game"></canvas>
+</div>
+<div class="info-container">
   <div id="score">Score = 1</div>
   <div id="time">Time Elapsed = 60</div>
   <div id="highestScore">Highest Score = 100</div>
-<canvas width="375" height="667" id="game"></canvas>
+</div>
+</div>
 <script>
     class Platform {
         constructor(x, y) {
