@@ -23,7 +23,7 @@
       #score {
         font-size: 2em;
         font-weight: bold;
-        position: abosulute;
+        position: absolute;
         color: #000000;
         top: 0;
         left: 0;
@@ -139,6 +139,7 @@
   //* starting adding platforms to the canvas 
   let y = platformStart;
   let doodlePlatforms = [new Platform(canvas.width / 2 - platformWidth / 2, platformStart)];
+  //create platforms until y reaches
   while (y > 0) {
     // the next platform can be placed above the previous one with a space
     // somewhere between the min and max space
