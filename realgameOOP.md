@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
   <title>Basic Doodle Jump HTML Game</title>
@@ -17,6 +18,7 @@
         border-radius: 10px;
         box-shadow: 0px 0px 10px #FF0000;
         display: block;
+        text-align: center;
         margin: 0;
         height: 100%;
       }
@@ -24,7 +26,6 @@
         font-size: 2em;
         font-weight: bold;
         font-family: Aharoni;
-        position: absolute;
         color: green;
         top: 0;
         left: 0;
@@ -36,7 +37,6 @@
         font-size: 2em;
         font-weight: bold;
         font-family: Aharoni;
-        position: absolute;
         color: green;
         top: 0;
         right: 0;
@@ -47,7 +47,6 @@
         font-size: 2em;
         font-weight: bold;
         font-family: Aharoni;
-        position: absolute;
         color: green;
         top: 0;
         right: 0;
