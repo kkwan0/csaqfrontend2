@@ -43,6 +43,7 @@
     <tr>
       <th>Cookie Name</th>
       <th>Cookie Value</th>
+      <th>Cookie Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -191,6 +192,8 @@ class DoodleJumper {
         }
       }
     }
+    }
+    }
 </script>
 
 
@@ -199,10 +202,10 @@ class DoodleJumper {
 
 
 <script>
-  
-  document.cookie = "score1=test"; //inputs a cookie
 
   var cookieValue = document.cookie;
+  const daysToExpire = new Date(2147483647 * 1000).toUTCString();
+    document.cookie = 'score1=test;' + ' expires=' + daysToExpire; //date
 
   // Split the cookie string into an array of cookies
   var cookies = cookieValue.split(';');
@@ -211,6 +214,7 @@ class DoodleJumper {
   var tableBody = document.querySelector('#cookieTable tbody');
 
   // Generate table rows for each cookie
+function tablegen() {
   for (var i = 0; i < cookies.length; i++) {
     var cookie = cookies[i].trim().split('=');
     var name = cookie[0];
@@ -220,12 +224,37 @@ class DoodleJumper {
 
     var nameCell = document.createElement('td');
     nameCell.textContent = name;
-    row.appendChild(nameCell);
+    row.appendChild(nameCell); //adds the item
 
     var valueCell = document.createElement('td');
     valueCell.textContent = value;
     row.appendChild(valueCell);
-
     tableBody.appendChild(row);
+
+    var deleteButtonCell = document.createElement('td');
+    var deleteButton = document.createElement('button'); //the butotn
+    deleteButton.textContent = 'rmove'; //text in button
+    deleteButton.addEventListener('click', buttonTest());
+    deleteButtonCell.appendChild(deleteButton);
+    row.appendChild(deleteButtonCell); //these 2 add the button
   }
+}
+tablegen();
+  function createNewCookie() {
+    // Generate a new cookie name and value
+    var cookieName = 'user' + (document.cookie.split('user').length - 1);
+    var cookieValue = 'value' + (document.cookie.split('user').length - 1);
+
+    // Set the new cookie
+    document.cookie = cookieName + '=' + cookieValue + '; expires=' + daysToExpire;
+    var tableBody = document.querySelector('#cookieTable tbody');  //returns the table
+  }
+
+  function deleteCookie(cookieName) {
+      document.cookie = '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+  }
+  function buttonTest() {
+    console.log("helo");
+  }
+
 </script> 
