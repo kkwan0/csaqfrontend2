@@ -204,15 +204,6 @@
   let prevDoodleY = doodle.Y;
   //game loop
   function loop() {
-    //check if the doodle falls off
-    if(
-      //doodle is falling
-      doodle.Dy > 0 && 
-      doodle.Y > canvas.height;
-    ) {
-      alert("Doodle fell off, game over!!!!!");
-      return;
-    }
     //updateScore();
     requestAnimationFrame(loop);
     context.clearRect(0,0,canvas.width,canvas.height);
@@ -294,6 +285,15 @@
     doodlePlatforms = doodlePlatforms.filter(function(platform) {
       return platform.Y < canvas.height;
     })
+    //check if the doodle falls off
+    if(
+      //doodle is falling
+      doodle.Dy > 0 && 
+      doodle.Y > canvas.height;
+    ) {
+      alert("Doodle fell off, game over!!!!!");
+      return;
+    }
   }
   // listen to keyboard events to move doodle
   document.addEventListener('keydown', function(e) {
