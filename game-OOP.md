@@ -234,7 +234,10 @@ function tablegen() {
     var deleteButtonCell = document.createElement('td');
     var deleteButton = document.createElement('button'); //the butotn
     deleteButton.textContent = 'rmove'; //text in button
-    deleteButton.addEventListener('click', buttonTest());
+    deleteButton.addEventListener('click', function()
+    {
+      deleteCookie(name);
+    });
     deleteButtonCell.appendChild(deleteButton);
     row.appendChild(deleteButtonCell); //these 2 add the button
   }
@@ -251,7 +254,7 @@ tablegen();
   }
 
   function deleteCookie(cookieName) {
-      document.cookie = '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+      document.cookie = cookieName + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
   }
   function buttonTest() {
     console.log("helo");
