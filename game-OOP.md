@@ -236,7 +236,7 @@ function tablegen() {
     deleteButton.textContent = 'rmove'; //text in button
     deleteButton.addEventListener('click', function()
     {
-      deleteCookie(name);
+      deleteCookie(name); //functino so that it doesn't run automatically
     });
     deleteButtonCell.appendChild(deleteButton);
     row.appendChild(deleteButtonCell); //these 2 add the button
