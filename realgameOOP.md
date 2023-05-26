@@ -295,7 +295,7 @@
     if(
       //doodle is falling
       doodle.Dy > 0 && 
-      doodle.Y > canvas.height;
+      doodle.Y > canvas.height
     ) {
       alert("Doodle fell off, game over!!!!!");
       document.getElementById("score").inner_HTML = score;
