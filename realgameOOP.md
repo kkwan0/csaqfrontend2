@@ -244,8 +244,9 @@
       });
       // add more platforms to the top of the screen as doodle moves up
       while (doodlePlatforms[doodlePlatforms.length - 1].Y > 0) {
-            doodlePlatforms.push(new Platform(random(25, canvas.width - 25 - platformWidth),doodlePlatforms[doodlePlatforms.length - 1].Y - (platformHeight + random(minPlatformSpace, maxPlatformSpace)))
-        );
+        doodlePlatforms.push(new Platform(random(25, canvas.width - 25 - platformWidth),doodlePlatforms[doodlePlatforms.length - 1].Y - (platformHeight + random(minPlatformSpace, maxPlatformSpace))));
+        score++;
+        document.getElementById('score').innerHTML = "Score: "+score;
         // add a bit to the min/max platform space as the player goes up
         minPlatformSpace += 0.5;
         maxPlatformSpace += 0.5;
@@ -302,8 +303,6 @@
         // reset doodle position so it's on top of the platform
         doodle.Y = platform.Y - doodle.H;
         doodle.Dy = bounceVelocity;
-        score++;
-        document.getElementById('score').innerHTML = "Score: "+score;
       }
     });
     // draw doodle
