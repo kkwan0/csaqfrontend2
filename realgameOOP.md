@@ -56,7 +56,7 @@
   </style>
 </head>
 <body>
-  <div id="score">Score = 1</div>
+  <div id="score"></div>
   <div id="time">Time Elapsed = 60</div>
   <div id="highestScore">Highest Score = 100</div>
 <canvas width="375" height="667" id="game"></canvas>
@@ -157,6 +157,10 @@
   const gravity = 0.33;
   const drag = 0.3;
   const bounceVelocity = -12.5;
+  //window varible
+  var windowId = undefined;
+  //score counter and variable
+  var score = 0;
   // minimum and maximum vertical space between each platform
   let minPlatformSpace = 15;
   let maxPlatformSpace = 20;
@@ -205,6 +209,7 @@
   //game loop
   function loop() {
     //updateScore();
+    windowId = undefined;
     requestAnimationFrame(loop);
     context.clearRect(0,0,canvas.width,canvas.height);
     // apply gravity to doodle
@@ -275,6 +280,7 @@
         // reset doodle position so it's on top of the platform
         doodle.Y = platform.Y - doodle.H;
         doodle.Dy = bounceVelocity;
+        score++;
       }
     });
     // draw doodle
@@ -292,6 +298,8 @@
       doodle.Y > canvas.height;
     ) {
       alert("Doodle fell off, game over!!!!!");
+      document.getElementById("score").inner_HTML = score;
+      cancelAnimationFrame(windowId); 
       return;
     }
   }
@@ -314,7 +322,7 @@
     keydown = false;
   });
   // start the game
-  requestAnimationFrame(loop);
+  windowId = requestAnimationFrame(loop);
   //updateScore();
   </script>
   </body>
