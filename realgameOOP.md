@@ -24,6 +24,9 @@
         height: 90%;
         style="display: inline-block;
       }
+      table {
+                margin-left: 20px;
+      }
       info-container {
         display: flex;
         flex-direction: column;
@@ -39,7 +42,7 @@
         left: 0;
         right: 0;
         width: 300px;
-        transform: translateX(12%);
+        transform: translateX(3%);
       }
       #time {
         font-size: 2em;
@@ -49,7 +52,7 @@
         top: 0;
         right: 0;
         width: 300px;
-        transform: translateX(12%);
+        transform: translateX(3%);
       }
       #highestScore {
         font-size: 2em;
@@ -59,7 +62,7 @@
         top: 0;
         right: 0;
         width: 300px;
-        transform: translateX(12%);
+        transform: translateX(3%);
       }
   </style>
 </head>
@@ -73,6 +76,19 @@
     <div id="score">Score: </div>
     <div id="time">Time Elapsed = 60</div>
     <div id="highestScore">Highest Score = 100</div>
+  </div>
+  <div class="table">
+<table id="cookieTable">
+  <thead>
+    <tr>
+      <th>Cookie Name</th>
+      <th>Cookie Value</th>
+      <th>Cookie Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
   </div>
 </div>
 <script>
@@ -229,6 +245,7 @@
       alert("Doodle fell off, game over!!!!!");
       document.getElementById('score').innerHTML = "Score: "+score;
       cancelAnimationFrame(windowId); 
+      createNewCookie();
       return;
     }
     windowId = undefined;
@@ -335,6 +352,58 @@
   // start the game
   windowId = requestAnimationFrame(loop);
   //updateScore();
+  console.log(score);
   </script>
+
+
+  <script>
+  var cookieValue = document.cookie;
+  const daysToExpire = new Date(2147483647 * 1000).toUTCString();
+    document.cookie = 'score1=test;' + ' expires=' + daysToExpire; //date
+  // Split the cookie string into an array of cookies
+  var cookies = cookieValue.split(';');
+  // Get the table body element
+  var tableBody = document.querySelector('#cookieTable tbody');
+  // Generate table rows for each cookie
+function tablegen() {
+  for (var i = 0; i < cookies.length; i++) {
+    var cookie = cookies[i].trim().split('=');
+    var name = cookie[0];
+    var value = cookie[1];
+    var row = document.createElement('tr');
+    var nameCell = document.createElement('td');
+    nameCell.textContent = name;
+    row.appendChild(nameCell); //adds the item
+    var valueCell = document.createElement('td');
+    valueCell.textContent = value;
+    row.appendChild(valueCell);
+    tableBody.appendChild(row);
+    var deleteButtonCell = document.createElement('td');
+    var deleteButton = document.createElement('button'); //the butotn
+    deleteButton.textContent = 'rmove'; //text in button
+    deleteButton.addEventListener('click', function()
+    {
+      deleteCookie(name); //functino so that it doesn't run automatically
+    });
+    deleteButtonCell.appendChild(deleteButton);
+    row.appendChild(deleteButtonCell); //these 2 add the button
+  }
+}
+tablegen();
+  function createNewCookie() {
+    // Generate a new cookie name and value
+    var cookieName = 'user' + (document.cookie.split('user').length - 1); //checks the length of how many users there are
+    var cookieValue = score;
+    // Set the new cookie
+    document.cookie = cookieName + '=' + cookieValue + '; expires=' + daysToExpire;
+    var tableBody = document.querySelector('#cookieTable tbody');  //returns the table
+  }
+  function deleteCookie(cookieName) {
+      document.cookie = cookieName + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+  }
+  function buttonTest() {
+    console.log(score);
+  }
+</script> 
   </body>
   </html>
