@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
   <title>Basic Doodle Jump HTML Game</title>
@@ -12,15 +11,24 @@
         text-align: center;
         align-items: center; 
       }
+      .container {
+        display: flex;
+      }
       canvas {
         border: 2px solid #FF0000;
         background-color: #E6E6E6;
         border-radius: 10px;
         box-shadow: 0px 0px 10px #FF0000;
         display: block;
-        text-align: center;
         margin: 0;
-        height: 100%;
+        height: 90%;
+        style="display: inline-block;
+      }
+      info-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        height: 90%;
       }
       #score {
         font-size: 2em;
@@ -56,10 +64,17 @@
   </style>
 </head>
 <body>
-  <div id="score"></div>
-  <div id="time">Time Elapsed = 60</div>
-  <div id="highestScore">Highest Score = 100</div>
-<canvas width="375" height="667" id="game"></canvas>
+
+<div class="container">
+  <div class="canvas-container">
+    <canvas width="375" height="667" id="game"></canvas>
+  </div>
+  <div class="info-container">
+    <div id="score">Score: </div>
+    <div id="time">Time Elapsed = 60</div>
+    <div id="highestScore">Highest Score = 100</div>
+  </div>
+</div>
 <script>
     class Platform {
         constructor(x, y) {
@@ -209,6 +224,13 @@
   //game loop
   function loop() {
     //updateScore();
+    //check if the doodle falls off
+    if(doodle.Y > canvas.height) {
+      alert("Doodle fell off, game over!!!!!");
+      document.getElementById('score').innerHTML = "Score: "+score;
+      cancelAnimationFrame(windowId); 
+      return;
+    }
     windowId = undefined;
     requestAnimationFrame(loop);
     context.clearRect(0,0,canvas.width,canvas.height);
@@ -281,6 +303,7 @@
         doodle.Y = platform.Y - doodle.H;
         doodle.Dy = bounceVelocity;
         score++;
+        document.getElementById('score').innerHTML = "Score: "+score;
       }
     });
     // draw doodle
@@ -291,17 +314,6 @@
     doodlePlatforms = doodlePlatforms.filter(function(platform) {
       return platform.Y < canvas.height;
     })
-    //check if the doodle falls off
-    if(
-      //doodle is falling
-      doodle.Dy > 0 && 
-      doodle.Y > canvas.height
-    ) {
-      alert("Doodle fell off, game over!!!!!");
-      document.getElementById("score").inner_HTML = score;
-      cancelAnimationFrame(windowId); 
-      return;
-    }
   }
   // listen to keyboard events to move doodle
   document.addEventListener('keydown', function(e) {

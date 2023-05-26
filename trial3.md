@@ -22,7 +22,7 @@
         display: block;
         margin: 0;
         height: 100%;
-        style="display: inline-block;"
+        style="display: inline-block;
       }
       info-container {
         display: flex;
@@ -34,7 +34,6 @@
         font-size: 2em;
         font-weight: bold;
         font-family: Aharoni;
-        position: abosulute;
         color: green;
         top: 0;
         left: 0;
@@ -46,7 +45,6 @@
         font-size: 2em;
         font-weight: bold;
         font-family: Aharoni;
-        position: abosulute;
         color: green;
         top: 0;
         right: 0;
@@ -57,7 +55,6 @@
         font-size: 2em;
         font-weight: bold;
         font-family: Aharoni;
-        position: abosulute;
         color: green;
         top: 0;
         right: 0;
