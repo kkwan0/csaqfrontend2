@@ -203,10 +203,10 @@
   dimg.src = "https://raw.githubusercontent.com/JasonMize/coding-league-assets/master/doodle-jump-doodler.png";
   //platforms image
   var pimg = new Image();
-  pimg.src = "platforms.png";
+  pimg.src = "platform2(1).png";
   //background image
   var bimg = new Image();
-  bimg.src = "doodlebackground.png";
+  bimg.src = "dbackground(1).png";
   //create platforms until y reaches
   while (y > 0) {
     // the next platform can be placed above the previous one with a space
