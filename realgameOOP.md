@@ -9,7 +9,7 @@
       }  
       body {
         text-align: center;
-        align-items: center; 
+        align-items: center;
       }
       .container {
         display: flex;
@@ -202,8 +202,11 @@
   var dimg = new Image();
   dimg.src = "https://raw.githubusercontent.com/JasonMize/coding-league-assets/master/doodle-jump-doodler.png";
   //platforms image
-  var ping = new Image();
-  
+  var pimg = new Image();
+  pimg.src = "platforms.png";
+  //background image
+  var bimg = new Image();
+  bimg.src = "doodlebackground.png";
   //create platforms until y reaches
   while (y > 0) {
     // the next platform can be placed above the previous one with a space
@@ -256,7 +259,9 @@
     }
     windowId = undefined;
     requestAnimationFrame(loop);
-    context.clearRect(0,0,canvas.width,canvas.height);
+    //context.clearRect(0,0,canvas.width,canvas.height);
+    //drawing background from image
+    context.drawImage(bimg, 0, 0, canvas.width,canvas.height);
     // apply gravity to doodle
     doodle.Dy += gravity;
     // if doodle reaches the middle of the screen, move the platforms down
@@ -309,7 +314,8 @@
     // draw platforms
     context.fillStyle = 'green';
     doodlePlatforms.forEach(function(platform) {
-      context.fillRect(platform.X, platform.Y, platformWidth, platformHeight);
+      //context.fillRect(platform.X, platform.Y, platformWidth, platformHeight);
+      context.drawImage(pimg, platform.X, platform.Y, platformWidth, platformHeight);
       // make doodle jump if it collides with a platform from above
       if (
         // doodle is falling
