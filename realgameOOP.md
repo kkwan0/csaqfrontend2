@@ -25,7 +25,7 @@
         style="display: inline-block;
       }
       table {
-                margin-left: 20px;
+        margin-left: 20px;
       }
       info-container {
         display: flex;
@@ -198,6 +198,9 @@
   //* starting adding platforms to the canvas 
   let y = platformStart;
   let doodlePlatforms = [new Platform(canvas.width / 2 - platformWidth / 2, platformStart)];
+  //doodle image
+  var dimg = new Image();
+  dimg.src = "https://raw.githubusercontent.com/JasonMize/coding-league-assets/master/doodle-jump-doodler.png";
   //create platforms until y reaches
   while (y > 0) {
     // the next platform can be placed above the previous one with a space
@@ -324,7 +327,8 @@
     });
     // draw doodle
     context.fillStyle = 'yellow';
-    context.fillRect(doodle.X, doodle.Y, doodle.W, doodle.H);
+    //context.fillRect(doodle.X, doodle.Y, doodle.W, doodle.H);
+    context.drawImage(dimg, doodle.X, doodle.Y, doodle.W, doodle.H);
     prevDoodleY = doodle.Y;
     // remove any platforms that have gone offscreen
     doodlePlatforms = doodlePlatforms.filter(function(platform) {
