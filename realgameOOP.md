@@ -203,7 +203,7 @@
   dimg.src = "https://raw.githubusercontent.com/JasonMize/coding-league-assets/master/doodle-jump-doodler.png";
   //platforms image
   var pimg = new Image();
-  pimg.src = "platform2(1).png";
+  pimg.src = "platform3.png";
   //background image
   var bimg = new Image();
   bimg.src = "dbackground(1).png";
