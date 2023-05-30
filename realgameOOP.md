@@ -417,6 +417,28 @@ tablegen();
   function buttonTest() {
     console.log(score);
   }
+
+//input into array
+var cookieString = document.cookie;
+var cookiePairs = cookieString.split(";");
+
+// Create an array to store the cookie values
+var cookieValues = [];
+
+// Iterate over each cookie pair
+for (var i = 0; i < cookiePairs.length; i++) {
+  // Extract the cookie name and value
+  var cookiePair = cookiePairs[i].trim();
+  var value = cookiePair.indexOf("=");
+  
+  // Extract the cookie value and add it to the array
+  var cookieName = cookiePair.substr(0, value);
+  var cookieValue = cookiePair.substr(value + 1);
+  cookieValues.push(cookieValue);
+}
+
+// Now you have an array (cookieValues) containing all the cookie values
+console.log(cookieValues);
 </script> 
   </body>
   </html>
