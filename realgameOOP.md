@@ -42,7 +42,7 @@
         left: 0;
         right: 0;
         width: 300px;
-        transform: translateX(3%);
+        transform: translateX(-2%);
       }
       #time {
         font-size: 2em;
@@ -52,7 +52,7 @@
         top: 0;
         right: 0;
         width: 300px;
-        transform: translateX(3%);
+        transform: translateX(-2%);
       }
       #highestScore {
         font-size: 2em;
@@ -62,7 +62,7 @@
         top: 0;
         right: 0;
         width: 300px;
-        transform: translateX(3%);
+        transform: translateX(-2%);
       }
   </style>
 </head>
