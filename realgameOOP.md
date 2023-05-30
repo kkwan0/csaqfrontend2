@@ -447,7 +447,17 @@ for (var i = 0; i < cookiePairs.length; i++) {
 // Now you have a 2D array (cookieArray) containing all the cookie names and values
 console.log(cookieArray);
 
+//sorting the array code
+/*
+let numbers = [0, 1 , 2, 3, 10, 20, 30 ];
+numbers.sort((a,b) => {
+    if(a < b) return 1;
+    if(a > b) return -1;
+    return 0;
+});
 
+console.log(numbers);
+*/
 
 var table = document.getElementById("tablearr");
 // Iterate over each cookie array in the 2D array
