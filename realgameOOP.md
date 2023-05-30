@@ -78,17 +78,15 @@
     <div id="highestScore">Highest Score = 100</div>
   </div>
   <div class="table">
-<table id="cookieTable">
-  <thead>
-    <tr>
-      <th>Cookie Name</th>
-      <th>Cookie Value</th>
-      <th>Cookie Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
+
+  <table id="tablearr">
+  <!-- Table headers or initial content -->
+  <tr>
+    <th>Cookie Name</th>
+    <th>Cookie Values</th>
+  </tr>
 </table>
+
   </div>
 </div>
 <script>
@@ -255,6 +253,7 @@
       document.getElementById('score').innerHTML = "Score: "+score;
       cancelAnimationFrame(windowId); 
       createNewCookie();
+      location.reload();       
       return;
     }
     windowId = undefined;
@@ -372,11 +371,10 @@
   <script>
   var cookieValue = document.cookie;
   const daysToExpire = new Date(2147483647 * 1000).toUTCString();
-    document.cookie = 'score1=test;' + ' expires=' + daysToExpire + ';SameSite=None; Secure'; //date
   // Split the cookie string into an array of cookies
   var cookies = cookieValue.split(';');
   // Get the table body element
-  var tableBody = document.querySelector('#cookieTable tbody');
+  var tableBody = document.querySelector('#tablearr');
   // Generate table rows for each cookie
 function tablegen() {
   for (var i = 0; i < cookies.length; i++) {
@@ -402,14 +400,13 @@ function tablegen() {
     row.appendChild(deleteButtonCell); //these 2 add the button
   }
 }
-tablegen();
   function createNewCookie() {
     // Generate a new cookie name and value
-    var cookieName = 'user' + (document.cookie.split('user').length - 1); //checks the length of how many users there are
+    var cookieName = 'player' + (document.cookie.split('player').length - 1); //checks the length of how many users there are
     var cookieValue = score;
     // Set the new cookie
     document.cookie = cookieName + '=' + cookieValue + '; expires=' + daysToExpire + ';SameSite=None';
-    var tableBody = document.querySelector('#cookieTable tbody');  //returns the table
+    var tableBody = document.querySelector('#tablearr');  //returns the table
   }
   function deleteCookie(cookieName) {
       document.cookie = cookieName + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
@@ -418,27 +415,57 @@ tablegen();
     console.log(score);
   }
 
-//input into array
+// Retrieve all cookies and split them into individual name-value pairs
 var cookieString = document.cookie;
 var cookiePairs = cookieString.split(";");
 
-// Create an array to store the cookie values
-var cookieValues = [];
+// Create a 2D array to store the cookie names and values
+var cookieArray = [];
 
 // Iterate over each cookie pair
 for (var i = 0; i < cookiePairs.length; i++) {
   // Extract the cookie name and value
   var cookiePair = cookiePairs[i].trim();
-  var value = cookiePair.indexOf("=");
-  
-  // Extract the cookie value and add it to the array
-  var cookieName = cookiePair.substr(0, value);
-  var cookieValue = cookiePair.substr(value + 1);
-  cookieValues.push(cookieValue);
+  var equals = cookiePair.indexOf("=");
+
+  // Extract the cookie name and value
+  var cookieName = cookiePair.substr(0, equals);
+  var cookieValue = cookiePair.substr(equals + 1);
+
+  // Create a new array to store the name-value pair
+  var cookie = [cookieName, cookieValue];
+
+  // Add the cookie array to the main cookieArray
+  cookieArray.push(cookie);
 }
 
-// Now you have an array (cookieValues) containing all the cookie values
-console.log(cookieValues);
+// Now you have a 2D array (cookieArray) containing all the cookie names and values
+console.log(cookieArray);
+
+
+
+var table = document.getElementById("tablearr");
+// Iterate over each cookie array in the 2D array
+for (var i = 0; i < cookieArray.length; i++) {
+  // Create a new row
+  var row = document.createElement("tr");
+  
+  // Iterate over each element in the cookie array
+  for (var j = 0; j < cookieArray[i].length; j++) {
+    // Create a new cell
+    var cell = document.createElement("td");
+    
+    // Set the cell text to the value in the cookie array
+    cell.textContent = cookieArray[i][j];
+    
+    // Append the cell to the row
+    row.appendChild(cell);
+  }
+  
+  // Append the row to the table
+  table.appendChild(row);
+}
+
 </script> 
   </body>
   </html>
