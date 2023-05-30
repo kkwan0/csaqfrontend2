@@ -372,7 +372,7 @@
   <script>
   var cookieValue = document.cookie;
   const daysToExpire = new Date(2147483647 * 1000).toUTCString();
-    document.cookie = 'score1=test;' + ' expires=' + daysToExpire; //date
+    document.cookie = 'score1=test;' + ' expires=' + daysToExpire + ';SameSite=None; Secure'; //date
   // Split the cookie string into an array of cookies
   var cookies = cookieValue.split(';');
   // Get the table body element
@@ -408,7 +408,7 @@ tablegen();
     var cookieName = 'user' + (document.cookie.split('user').length - 1); //checks the length of how many users there are
     var cookieValue = score;
     // Set the new cookie
-    document.cookie = cookieName + '=' + cookieValue + '; expires=' + daysToExpire;
+    document.cookie = cookieName + '=' + cookieValue + '; expires=' + daysToExpire + ';SameSite=None';
     var tableBody = document.querySelector('#cookieTable tbody');  //returns the table
   }
   function deleteCookie(cookieName) {
