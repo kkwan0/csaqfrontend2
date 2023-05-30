@@ -480,7 +480,31 @@ for (var i = 0; i < cookieArray.length; i++) {
   // Append the row to the table
   table.appendChild(row);
 }
+    document.cookie = 'highscore' + '=' + '300' + '; expires=' + daysToExpire + ';SameSite=None';
 
+function getHighScore() {
+  var cookieString = document.cookie;
+  var cookieArray = cookieString.split(";");
+
+  // Iterate over each cookie
+  for (var i = 0; i < cookieArray.length; i++) {
+    var cookie = cookieArray[i].trim();
+
+    // Check if the cookie starts with the provided name
+    if (cookie.startsWith("highscore=")) {
+      // Extract and return the cookie value
+      console.log("found");
+      return cookie.substring(highscore.length + 1);
+    }
+  }
+
+  // Return null if the cookie is not found
+  console.log("notfound");
+  return null;
+}
+getHighScore();
+console.log(getHighScore());
+document.getElementById('highestScore').innerHTML = "Highest Score: " + getHighScore();
 </script> 
   </body>
   </html>
