@@ -192,6 +192,7 @@
   var windowId = undefined;
   //score counter and variable
   var score = 0;
+  var highscore = 0; //highscore
   // minimum and maximum vertical space between each platform
   let minPlatformSpace = 15;
   let maxPlatformSpace = 20;
@@ -252,6 +253,10 @@
     //check if the doodle falls off
     if(doodle.Y > canvas.height) {
       alert("Doodle fell off, game over!!!!!");
+      if (score > highscore) {
+        highscore = score;
+        document.getElementById('highestScore').innerHTML = "Highscore: "+ highscore;
+      }
       document.getElementById('score').innerHTML = "Score: "+score;
       cancelAnimationFrame(windowId); 
       createNewCookie();
