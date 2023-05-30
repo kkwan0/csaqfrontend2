@@ -74,8 +74,8 @@
   </div>
   <div class="info-container">
     <div id="score">Score: </div>
-    <div id="time">Time Elapsed = 60</div>
-    <div id="highestScore">Highest Score = 100</div>
+    <div id="time">Time Elapsed: </div>
+    <div id="highestScore">Highest Score: </div>
   </div>
   <div class="table">
 <table id="cookieTable">
