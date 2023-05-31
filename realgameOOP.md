@@ -36,31 +36,49 @@
       #score {
         font-size: 2em;
         font-weight: bold;
-        font-family: Aharoni;
-        color: green;
+        font-family: 'Courier New', monospace;
         top: 0;
         left: 0;
         right: 0;
         width: 300px;
         transform: translateX(-2%);
+        text-transform: uppercase;
+	background: linear-gradient(to right,  #500573  30%, #161070   75%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font: {
+		size: 20vw;
+		family: $font;
+	};
       }
-      #time {
-        font-size: 2em;
+      #highestScore {
+        font-size: 1.7em;
         font-weight: bold;
-        font-family: Aharoni;
-        color: green;
+        font-family: 'Courier New', monospace;
         top: 0;
         right: 0;
         width: 300px;
         transform: translateX(-2%);
+        background: linear-gradient(to right,  #500573  30%,  #161070    75%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font: {
+		size: 20vw;
+		family: $font;
+	};
       }
-      #highestScore {
-        font-size: 2em;
+      /* th table head */
+      th
+      {
         font-weight: bold;
-        font-family: Aharoni;
-        color: green;
-        top: 0;
-        right: 0;
+        color:  #7673ff ;
+        transform: translateX(-3%);
+      }
+      td
+      {
+font-weight: bold;
+        color:   #8683fb   ;
+        font-family: "Comic Sans MS", "Comic Sans", cursive;
         width: 300px;
         transform: translateX(-2%);
       }
@@ -74,7 +92,7 @@
   </div>
   <div class="info-container">
     <div id="score">Score: </div>
-    <div id="time">Time Elapsed: </div>
+    <div id="score">Time Elapsed: </div>
     <div id="highestScore">Highest Score: </div>
   </div>
   <div class="table">
@@ -82,8 +100,8 @@
   <table id="tablearr">
   <!-- Table headers or initial content -->
   <tr>
-    <th>Cookie Name</th>
-    <th>Cookie Values</th>
+    <th>Session</th>
+    <th>Score</th>
   </tr>
 </table>
 
@@ -203,7 +221,7 @@
   dimg.src = "https://raw.githubusercontent.com/JasonMize/coding-league-assets/master/doodle-jump-doodler.png";
   //platforms image
   var pimg = new Image();
-  pimg.src = "platform4.png";
+  pimg.src = "platform3.png";
   //background image
   var bimg = new Image();
   bimg.src = "dbackground(1).png";
@@ -465,17 +483,7 @@ for (var i = 0; i < cookiePairs.length; i++) {
 // Now you have a 2D array (cookieArray) containing all the cookie names and values
 console.log(cookieArray);
 
-//sorting the array code
-/*
-let numbers = [0, 1 , 2, 3, 10, 20, 30 ];
-numbers.sort((a,b) => {
-    if(a < b) return 1;
-    if(a > b) return -1;
-    return 0;
-});
 
-console.log(numbers);
-*/
 
 var table = document.getElementById("tablearr");
 
