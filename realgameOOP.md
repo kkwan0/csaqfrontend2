@@ -190,7 +190,8 @@
   var windowId = undefined;
   //score counter and variable
   var score = 0;
-  var highscore = 0; //highscore
+  var highscore = getHighScore(); //highscore
+  //
   // minimum and maximum vertical space between each platform
   let minPlatformSpace = 15;
   let maxPlatformSpace = 20;
@@ -254,6 +255,8 @@
       if (score > highscore) {
         highscore = score;
         document.getElementById('highestScore').innerHTML = "Highscore: "+ highscore;
+        document.cookie = 'highscore' + '=' + score + '; expires=' +    daysToExpire + ';SameSite=None';
+        console.log(highscore);
       }
       document.getElementById('score').innerHTML = "Score: "+score;
       cancelAnimationFrame(windowId); 
@@ -369,7 +372,24 @@
   // start the game
   windowId = requestAnimationFrame(loop);
   //updateScore();
-  console.log(score);
+  function getHighScore() {
+  var cookieString = document.cookie;
+  var cookieArray = cookieString.split(";");
+  // Iterate over each cookie
+  for (var i = 0; i < cookieArray.length; i++) {
+    var cookie = cookieArray[i].trim();
+    // Check if the cookie starts with the provided name
+    if (cookie.startsWith("highscore=")) {
+      // Extract and return the cookie value
+      var score = parseInt(cookie.substring("highscore=".length));    
+      return score;
+      }
+  }
+  // Return null if the cookie is not found
+  console.log("notfound");
+  return null;
+  }
+  console.log(getHighScore());
   </script>
 
 
@@ -416,9 +436,7 @@ function tablegen() {
   function deleteCookie(cookieName) {
       document.cookie = cookieName + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
   }
-  function buttonTest() {
-    console.log(score);
-  }
+ 
 
 // Retrieve all cookies and split them into individual name-value pairs
 var cookieString = document.cookie;
@@ -450,6 +468,26 @@ console.log(cookieArray);
 
 
 var table = document.getElementById("tablearr");
+
+for (var i = 0; i < cookieArray.length; i++) {
+  if (cookieArray[i][0].startsWith("highscore")) {
+    highscoreRowIndex = i;
+    console.log("found");
+    console.log(cookieArray[i][0]);
+
+    cookieArray = deleteRow(cookieArray, i);
+
+    break;
+  }
+}
+
+function deleteRow(arr, row) {
+  arr = arr.slice(0); // make a copy
+  arr.splice(row, 1);
+  return arr;
+}
+
+
 // Iterate over each cookie array in the 2D array
 for (var i = 0; i < cookieArray.length; i++) {
   // Create a new row
@@ -470,7 +508,14 @@ for (var i = 0; i < cookieArray.length; i++) {
   // Append the row to the table
   table.appendChild(row);
 }
-    document.cookie = 'highscore' + '=' + '300' + '; expires=' + daysToExpire + ';SameSite=None';
+
+
+
+
+
+
+
+
 
 function getHighScore() {
   var cookieString = document.cookie;
@@ -483,18 +528,21 @@ function getHighScore() {
     // Check if the cookie starts with the provided name
     if (cookie.startsWith("highscore=")) {
       // Extract and return the cookie value
-      console.log("found");
-      return cookie.substring(highscore.length + 1);
-    }
+      var score = parseInt(cookie.substring("highscore=".length));    
+      return score;
+      }
   }
 
   // Return null if the cookie is not found
   console.log("notfound");
   return null;
 }
+
+
 getHighScore();
 console.log(getHighScore());
 document.getElementById('highestScore').innerHTML = "Highest Score: " + getHighScore();
+
 </script> 
   </body>
   </html>
