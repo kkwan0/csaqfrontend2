@@ -6,12 +6,11 @@
       html, body {
         height: 100%;  
         margin: 0;
-        background-color: black;
+        background-image: "backgroundspace.png";      
       }  
       body {
         text-align: center;
         align-items: center;
-        background-image: "doodlebackground.png";
       }
       .container {
         display: flex;
