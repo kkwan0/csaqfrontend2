@@ -73,13 +73,19 @@
           family: $font;
       }
       }
-      td
+      tr
       {
-font-weight: bold;
+      font-weight: bold;
         color:   #8683fb   ;
         font-family: "Comic Sans MS", "Comic Sans", cursive;
         width: 300px;
-        transform: translateX(-2%);
+      }
+      th
+      {
+      font-weight: bold;
+        color:   #8683fb   ;
+        font-family: "Comic Sans MS", "Comic Sans", cursive;
+        width: 300px;
       }
   </style>
 </head>
