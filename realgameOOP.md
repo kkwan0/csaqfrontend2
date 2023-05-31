@@ -6,7 +6,7 @@
       html, body {
         height: 100%;  
         margin: 0;
-        background-image: "backgroundspace.png";      
+        background-image: url('https://wallpapercave.com/wp/wp391670.jpg');      
       }  
       body {
         text-align: center;
@@ -44,7 +44,7 @@
         width: 300px;
         transform: translateX(-2%);
         text-transform: uppercase;
-        background: linear-gradient(to right,  #500573  30%, #161070   75%);
+        background: linear-gradient(to right,  #FFFF00  30%, #FFA500   75%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         font: {
@@ -64,25 +64,23 @@
         width: 300px;
         transform: translateX(-2%);
         text-transform: uppercase;
-        background: linear-gradient(to right,  #500573  30%, #161070   75%);
+        background: linear-gradient(to right,  #FFFF00  30%, #FFA500   75%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         font: {
           size: 20vw;
           family: $font;
+        }
       }
-      }
-      tr
-      {
-      font-weight: bold;
-        color:   #8683fb   ;
+      tr {
+        font-weight: bold;
+        color:   #FDB813   ;
         font-family: "Comic Sans MS", "Comic Sans", cursive;
         width: 300px;
       }
-      th
-      {
-      font-weight: bold;
-        color:   #8683fb   ;
+      th {
+        font-weight: bold;
+        color:   #FDB813   ;
         font-family: "Comic Sans MS", "Comic Sans", cursive;
         width: 300px;
       }
