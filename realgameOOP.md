@@ -58,6 +58,20 @@
         font-weight: bold;
         color:  #7673ff ;
         transform: translateX(-3%);
+         font-family: 'Courier New', monospace;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 300px;
+        transform: translateX(-2%);
+        text-transform: uppercase;
+        background: linear-gradient(to right,  #500573  30%, #161070   75%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font: {
+          size: 20vw;
+          family: $font;
+      }
       }
       td
       {
@@ -77,7 +91,6 @@ font-weight: bold;
   </div>
   <div class="info-container">
     <div id="score">Score: </div>
-    <div id="score">Time Elapsed: </div>
     <div id="highestScore">Highest Score: </div>
   </div>
   <div class="table">
