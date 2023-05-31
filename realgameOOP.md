@@ -44,16 +44,6 @@
         width: 300px;
         transform: translateX(-2%);
       }
-      #time {
-        font-size: 2em;
-        font-weight: bold;
-        font-family: Aharoni;
-        color: green;
-        top: 0;
-        right: 0;
-        width: 300px;
-        transform: translateX(-2%);
-      }
       #highestScore {
         font-size: 2em;
         font-weight: bold;
@@ -74,7 +64,6 @@
   </div>
   <div class="info-container">
     <div id="score">Score: </div>
-    <div id="time">Time Elapsed: </div>
     <div id="highestScore">Highest Score: </div>
   </div>
   <div class="table">
