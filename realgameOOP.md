@@ -45,33 +45,16 @@
         width: 300px;
         transform: translateX(-2%);
         text-transform: uppercase;
-	background: linear-gradient(to right,  #500573  30%, #161070   75%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	font: {
-		size: 20vw;
-		family: $font;
-	};
+        background: linear-gradient(to right,  #500573  30%, #161070   75%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font: {
+          size: 20vw;
+          family: $font;
+	      };
       }
       #highestScore {
-        font-size: 1.7em;
-        font-weight: bold;
-        font-family: 'Courier New', monospace;
-        top: 0;
-        right: 0;
-        width: 300px;
-        transform: translateX(-2%);
-        background: linear-gradient(to right,  #500573  30%,  #161070    75%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	font: {
-		size: 20vw;
-		family: $font;
-	};
-      }
-      /* th table head */
-      th
-      {
+        font-size: 2em;
         font-weight: bold;
         color:  #7673ff ;
         transform: translateX(-3%);
