@@ -36,21 +36,32 @@
       #score {
         font-size: 2em;
         font-weight: bold;
-        font-family: Aharoni;
-        color: green;
+        font-family: 'Courier New', monospace;
         top: 0;
         left: 0;
         right: 0;
         width: 300px;
         transform: translateX(-2%);
+        text-transform: uppercase;
+        background: linear-gradient(to right,  #500573  30%, #161070   75%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font: {
+          size: 20vw;
+          family: $font;
+	      };
       }
       #highestScore {
         font-size: 2em;
         font-weight: bold;
-        font-family: Aharoni;
-        color: green;
-        top: 0;
-        right: 0;
+        color:  #7673ff ;
+        transform: translateX(-3%);
+      }
+      td
+      {
+font-weight: bold;
+        color:   #8683fb   ;
+        font-family: "Comic Sans MS", "Comic Sans", cursive;
         width: 300px;
         transform: translateX(-2%);
       }
@@ -64,6 +75,7 @@
   </div>
   <div class="info-container">
     <div id="score">Score: </div>
+    <div id="score">Time Elapsed: </div>
     <div id="highestScore">Highest Score: </div>
   </div>
   <div class="table">
@@ -71,8 +83,8 @@
   <table id="tablearr">
   <!-- Table headers or initial content -->
   <tr>
-    <th>Cookie Name</th>
-    <th>Cookie Values</th>
+    <th>Session</th>
+    <th>Score</th>
   </tr>
 </table>
 
@@ -179,7 +191,8 @@
   var windowId = undefined;
   //score counter and variable
   var score = 0;
-  var highscore = 0; //highscore
+  var highscore = getHighScore(); //highscore
+  //
   // minimum and maximum vertical space between each platform
   let minPlatformSpace = 15;
   let maxPlatformSpace = 20;
@@ -243,6 +256,8 @@
       if (score > highscore) {
         highscore = score;
         document.getElementById('highestScore').innerHTML = "Highscore: "+ highscore;
+        document.cookie = 'highscore' + '=' + score + '; expires=' +    daysToExpire + ';SameSite=None';
+        console.log(highscore);
       }
       document.getElementById('score').innerHTML = "Score: "+score;
       cancelAnimationFrame(windowId); 
@@ -358,7 +373,24 @@
   // start the game
   windowId = requestAnimationFrame(loop);
   //updateScore();
-  console.log(score);
+  function getHighScore() {
+  var cookieString = document.cookie;
+  var cookieArray = cookieString.split(";");
+  // Iterate over each cookie
+  for (var i = 0; i < cookieArray.length; i++) {
+    var cookie = cookieArray[i].trim();
+    // Check if the cookie starts with the provided name
+    if (cookie.startsWith("highscore=")) {
+      // Extract and return the cookie value
+      var score = parseInt(cookie.substring("highscore=".length));    
+      return score;
+      }
+  }
+  // Return null if the cookie is not found
+  console.log("notfound");
+  return null;
+  }
+  console.log(getHighScore());
   </script>
 
 
@@ -405,9 +437,7 @@ function tablegen() {
   function deleteCookie(cookieName) {
       document.cookie = cookieName + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
   }
-  function buttonTest() {
-    console.log(score);
-  }
+ 
 
 // Retrieve all cookies and split them into individual name-value pairs
 var cookieString = document.cookie;
@@ -439,6 +469,26 @@ console.log(cookieArray);
 
 
 var table = document.getElementById("tablearr");
+
+for (var i = 0; i < cookieArray.length; i++) {
+  if (cookieArray[i][0].startsWith("highscore")) {
+    highscoreRowIndex = i;
+    console.log("found");
+    console.log(cookieArray[i][0]);
+
+    cookieArray = deleteRow(cookieArray, i);
+
+    break;
+  }
+}
+
+function deleteRow(arr, row) {
+  arr = arr.slice(0); // make a copy
+  arr.splice(row, 1);
+  return arr;
+}
+
+
 // Iterate over each cookie array in the 2D array
 for (var i = 0; i < cookieArray.length; i++) {
   // Create a new row
@@ -459,6 +509,40 @@ for (var i = 0; i < cookieArray.length; i++) {
   // Append the row to the table
   table.appendChild(row);
 }
+
+
+
+
+
+
+
+
+
+function getHighScore() {
+  var cookieString = document.cookie;
+  var cookieArray = cookieString.split(";");
+
+  // Iterate over each cookie
+  for (var i = 0; i < cookieArray.length; i++) {
+    var cookie = cookieArray[i].trim();
+
+    // Check if the cookie starts with the provided name
+    if (cookie.startsWith("highscore=")) {
+      // Extract and return the cookie value
+      var score = parseInt(cookie.substring("highscore=".length));    
+      return score;
+      }
+  }
+
+  // Return null if the cookie is not found
+  console.log("notfound");
+  return null;
+}
+
+
+getHighScore();
+console.log(getHighScore());
+document.getElementById('highestScore').innerHTML = "Highest Score: " + getHighScore();
 
 </script> 
   </body>
